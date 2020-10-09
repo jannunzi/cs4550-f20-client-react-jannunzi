@@ -7,10 +7,34 @@ import Hello from "./Hello";
 import * as serviceWorker from './serviceWorker';
 import CourseListComponent from "./components/CourseListComponent";
 import SimpleCalculator from "./components/SimpleCalculator";
+import {Login} from "./components/Login";
+import {Register} from "./components/Register";
+import {Profile} from "./components/Profile";
+import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {CourseEditor} from "./components/CourseEditor";
+import {CourseManager} from "./components/CourseManager";
+import HelloComponent from "./components/HelloComponent"
+import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+import HelloContainer from "./containers/HelloContainer";
+import fsm from "./reducers/fsmReducer"
+import moduleReducer from "./reducers/modulesReducer";
+import CounterComponent from "./components/CounterComponent";
+import CounterContainer from "./containers/CounterContainer";
+
+const rootReducer = combineReducers({
+  fsm: fsm,
+  moduleReducer: moduleReducer
+})
+
+const store = createStore(rootReducer)
 
 ReactDOM.render(
-  <CourseListComponent/>
-  ,
+  <Provider store={store}>
+    <CourseManager/>
+    <CounterContainer/>
+    <HelloContainer/>
+  </Provider>,
   document.getElementById('root')
 );
 
