@@ -10,12 +10,13 @@ import {
 } from "../actions/moduleActions";
 
 const ModuleList = (
-  { modules=[],
+  { course,
+    modules=[],
     deleteModule,
     createModule,
     updateModule}) =>
   <div>
-    <h1>Modules</h1>
+    <h1>Modules for {course.title} {course._id}</h1>
     <ul>
       {
         modules.map(module =>
@@ -52,7 +53,7 @@ const ModuleList = (
         </li>)
       }
     </ul>
-    <button onClick={createModule}>
+    <button onClick={() => createModule(course, {title: "New Module"})}>
       Create Module
     </button>
   </div>
@@ -60,12 +61,13 @@ const ModuleList = (
 // export default ModuleList
 
 const stateToPropertyMapper = (state) => ({
-  modules: state.moduleReducer.modules
+  modules: state.moduleReducer.modules,
+  course: state.courseReducer.course
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
   deleteModule: (module) => deleteModule(dispatch, module),
-  createModule: () => createModule(dispatch),
+  createModule: (course, module) => createModule(dispatch, course, module),
   updateModule: (module) => updateModule(dispatch, module)
 })
 

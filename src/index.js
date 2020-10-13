@@ -19,12 +19,14 @@ import {Provider} from "react-redux";
 import HelloContainer from "./containers/HelloContainer";
 import fsm from "./reducers/fsmReducer"
 import moduleReducer from "./reducers/modulesReducer";
+import courseReducer from "./reducers/courseReducer";
 import CounterComponent from "./components/CounterComponent";
 import CounterContainer from "./containers/CounterContainer";
 
 const rootReducer = combineReducers({
-  fsm: fsm,
-  moduleReducer: moduleReducer
+  fsm,
+  moduleReducer,
+  courseReducer
 })
 
 const store = createStore(rootReducer)
@@ -32,8 +34,6 @@ const store = createStore(rootReducer)
 ReactDOM.render(
   <Provider store={store}>
     <CourseManager/>
-    <CounterContainer/>
-    <HelloContainer/>
   </Provider>,
   document.getElementById('root')
 );
