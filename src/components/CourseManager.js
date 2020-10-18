@@ -21,7 +21,12 @@ export class CourseManager extends React.Component {
           <Route path="/register" exact component={Register}/>
           <Route path="/profile" exact component={Profile}/>
           <Route path="/courses" exact component={CourseListComponent}/>
-          <Route path="/edit/:courseId" exact component={CourseEditor}/>
+          <Route path={[
+            "/edit/:courseId",
+            "/edit/:courseId/modules/:moduleId"
+          ]}
+                 exact
+                 component={CourseEditor}/>
         </div>
       </Router>
     )

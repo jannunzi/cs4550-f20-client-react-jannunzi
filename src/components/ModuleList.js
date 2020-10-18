@@ -8,6 +8,7 @@ import {
   createModule,
   deleteModule
 } from "../actions/moduleActions";
+import {Link} from "react-router-dom";
 
 const ModuleList = (
   { course,
@@ -16,11 +17,11 @@ const ModuleList = (
     createModule,
     updateModule}) =>
   <div>
-    <h1>Modules for {course.title} {course._id}</h1>
+    <h1>{course.title}</h1>
     <ul>
       {
         modules.map(module =>
-        <li>
+        <li key={module._id}>
           <button
             onClick={() => deleteModule(module)}>
             Delete
@@ -42,13 +43,15 @@ const ModuleList = (
           }
           {
             !module.editing &&
-              <label>
+              <span>
                 <button onClick={
                   () => updateModule({...module, editing: true})}>
                   Edit
                 </button>
+                <Link to={`/edit/${course._id}/modules/${module._id}`}>
                 {module.title}
-              </label>
+                </Link>
+              </span>
           }
         </li>)
       }

@@ -1,5 +1,5 @@
-const url = "https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses"
-const moduleUrl = "https://wbdv-generic-server.herokuapp.com/api/jannunzi/modules"
+const url = "https://wbdv-generic-server.herokuapp.com/api/jannunzi2/courses"
+const moduleUrl = "https://wbdv-generic-server.herokuapp.com/api/jannunzi2/modules"
 
 export const updateModule = (moduleId, newModule) =>
   fetch(`${moduleUrl}/${moduleId}`, {

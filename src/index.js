@@ -20,13 +20,15 @@ import HelloContainer from "./containers/HelloContainer";
 import fsm from "./reducers/fsmReducer"
 import moduleReducer from "./reducers/modulesReducer";
 import courseReducer from "./reducers/courseReducer";
+import {lessonReducer} from "./reducers/lessonReducer";
 import CounterComponent from "./components/CounterComponent";
 import CounterContainer from "./containers/CounterContainer";
 
 const rootReducer = combineReducers({
   fsm,
   moduleReducer,
-  courseReducer
+  courseReducer,
+  lessonReducer
 })
 
 const store = createStore(rootReducer)
